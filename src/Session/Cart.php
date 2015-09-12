@@ -1,4 +1,4 @@
-<?php namespace Daavelar\Cart\Session;
+<?php namespace NovoTempo\Cart\Session;
 
 use Session;
 
@@ -64,12 +64,13 @@ class Cart
         return true;
     }
 
-    /**
-     * Verify if the division exists in session
-     *
-     * @param $division
-     * @return bool
-     */
+    public function removeUnit($identifier)
+    {
+        foreach(Session::get('divisions') as $division) {
+            $this->division($division)->removeUnit($identifier);
+        }
+    }
+
     private function divisionExists($division)
     {
         if(!$this->divisionsWasInitialized()) {

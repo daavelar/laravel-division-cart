@@ -1,6 +1,9 @@
-<?php
+<?php namespace Tests\Site;
 
-class CarrinhoTest extends TestCase
+use Cart, Session;
+use NovoTempo\Entities\Produto;
+
+class CarrinhoTest extends \TestCase
 {
 
     public function setUp()
@@ -256,6 +259,37 @@ class CarrinhoTest extends TestCase
         $this->assertEquals(1, Cart::division('fisicos')->count());
         $this->assertEquals(25.76, Cart::division('fisicos')->total());
         $this->assertEquals($identifier1, $identifier2);
+    }
+
+    public function test_remover_apenas_uma_unidade_do_produto()
+    {
+    	$identifier1 = Cart::division('fisicos')->add([
+            'id'       => 1,
+            'title'    => 'Teste 1',
+            'price'    => 12.88,
+            'quantity' => 1,
+            'options'  => [
+                'artista' => [
+                    'nome' => 'Wanderley Cardoso'
+                ]
+            ]
+        ]);
+
+        $identifier2 = Cart::division('fisicos')->add([
+            'id'       => 1,
+            'title'    => 'Teste 1',
+            'price'    => 12.88,
+            'quantity' => 1,
+            'options'  => [
+                'artista' => [
+                    'nome' => 'Wanderley Cardoso'
+                ]
+            ]
+        ]);
+
+        $this->assertEquals(25.76, Cart::division('fisicos')->total());
+        Cart::removeUnit($identifier2);
+        $this->assertEquals(12.88, Cart::division('fisicos')->total());
     }
 
 

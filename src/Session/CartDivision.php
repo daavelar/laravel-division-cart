@@ -1,4 +1,4 @@
-<?php namespace Daavelar\Cart\Session;
+<?php namespace NovoTempo\Cart\Session;
 
 use Session;
 
@@ -79,6 +79,23 @@ class CartDivision
         foreach(Session::get("cart.{$this->division}") as $key => $item) {
             if($item['identifier'] == $identifier) {
                 Session::forget("cart.{$this->division}.$key");
+            }
+        }
+    }
+
+    public function removeUnit($identifier)
+    {
+        foreach(Session::get("cart.{$this->division}") as $key => $item) {
+            if($item['identifier'] == $identifier) {
+                $item_quantity = Session::get("cart.{$this->division}.$key.content.quantity");
+
+                if($item_quantity == 1) {
+                    $this->remove($identifier);
+                }
+                else {
+                    Session::put("cart.{$this->division}.$key.content.quantity", $item_quantity-1);
+                }
+
             }
         }
     }
