@@ -1,9 +1,9 @@
 <?php
 
-namespace NovoTempo\Cart\Providers;
+namespace Daavelar\Cart\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use NovoTempo\Cart\Session\Cart as SessionCart;
+use Daavelar\Cart\Session\Cart as SessionCart;
 
 class CartServiceProvider extends ServiceProvider
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace NovoTempo\Cart\Facades;
+namespace Daavelar\Cart\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

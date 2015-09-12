@@ -1,0 +1,21 @@
+{
+    "name": "daavelar/cart",
+    "description": "Cart with division inside",
+    "keywords": ["laravel", "cart", "divisions", "ecommerce"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Diego Avelar",
+            "email": "diegoarmando2011@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "illuminate/support": "5.1.*",
+    },
+    "autoload": {
+        "psr-4": {
+            "Daavelar\\Cart\\": "src/"
+        }
+    }
+}

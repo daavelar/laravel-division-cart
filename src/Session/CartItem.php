@@ -1,4 +1,4 @@
-<?php namespace NovoTempo\Cart\Session;
+<?php namespace Daavelar\Cart\Session;
 
 
 class CartItem
